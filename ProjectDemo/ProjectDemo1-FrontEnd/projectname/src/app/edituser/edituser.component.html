@@ -1,0 +1,34 @@
+<div class="container mt-4">
+  <h2>Edit User</h2>
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="id">ID</label>
+      <input type="text" id="id" formControlName="id" class="form-control" readonly>
+    </div>
+
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input type="text" id="firstName" formControlName="firstName" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input type="text" id="lastName" formControlName="lastName" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" formControlName="email" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+      <label for="isActive">Active</label>
+      <select id="isActive" formControlName="isActive" class="form-control" required>
+        <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="button" class="btn btn-secondary" (click)="router.navigate(['/dashboard/users'])">Cancel</button>
+  </form>
+</div>

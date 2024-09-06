@@ -1,0 +1,76 @@
+<div class="modal-header">
+  <h4 class="modal-title">Add Room</h4>
+  <button type="button" class="close" aria-label="Close" (click)="close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="roomForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="roomNumber">Room Number</label>
+      <input id="roomNumber" type="number" formControlName="roomNumber" class="form-control">
+    </div>
+   
+    <div class="form-group">
+      <label for="roomType">Room Type</label>
+      <select id="roomType" formControlName="roomType" class="form-control">
+        <option value="">Select room type</option>
+        <option value="Single Bed">Single Bed</option>
+        <option value="Double Bed">Double Bed</option>
+        <option value="Family Type">Family Type</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="price">Price</label>
+      <input id="price" type="number" formControlName="price" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="isAvailable">Available</label>
+      <select id="isAvailable" formControlName="isAvailable" class="form-control">
+        <option [value]="true">Yes</option>
+        <option [value]="false">No</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="imagePath">Image URL</label>
+      <input id="imagePath" type="text" formControlName="imagePath" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="rating">Rating</label>
+      <input id="rating" type="number" formControlName="rating" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="location">Location</label>
+      <input id="location" type="text" formControlName="location" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <input id="description" type="text" formControlName="description" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="wifi">Free Wi-Fi</label>
+      <input id="wifi" type="checkbox" formControlName="wifi">
+    </div>
+    <div class="form-group">
+      <label for="tv">TV Available</label>
+      <input id="tv" type="checkbox" formControlName="tv">
+    </div>
+    <div class="form-group">
+      <label for="carparking">Car parking Available</label>
+      <input id="carparking" type="checkbox" formControlName="carparking">
+    </div>
+    <div class="form-group">
+      <label for="hotwater">Hot Water</label>
+      <input id="hotwater" type="checkbox" formControlName="hotwater">
+    </div>
+    <div class="form-group">
+      <label for="ironing">Ironing</label>
+      <input id="ironing" type="checkbox" formControlName="ironing">
+    </div>
+    <div class="form-group">
+      <label for="freecancelation">Free Cancelation</label>
+      <input id="freecancelation" type="checkbox" formControlName="freecancelation">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

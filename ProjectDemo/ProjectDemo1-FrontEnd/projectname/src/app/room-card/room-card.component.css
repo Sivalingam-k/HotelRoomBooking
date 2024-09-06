@@ -1,0 +1,74 @@
+/* Container for each card */
+.card-container {
+  display: flex;
+  justify-content: center;
+  margin: 1rem auto; /* Center the card and add some space around it */
+}
+
+/* Card styling */
+.room-card {
+  display: flex;
+  flex-direction: row; /* Horizontal layout */
+  height: auto; /* Adjust height based on content */
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.room-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Image container */
+.image-container {
+  flex: 0 0 40%; /* Image takes up 40% of the card width */
+  padding: 1rem;
+  box-sizing: border-box;
+  border-right: 1px solid #ddd; /* Light border between image and content */
+}
+
+.card-img {
+  width: 100%;
+  height: auto; /* Adjust height to maintain aspect ratio */
+  object-fit: cover; /* Maintain aspect ratio */
+}
+
+/* Content container */
+.content-container {
+  flex: 0 0 40%; /* Content takes up 40% of the card width */
+  padding: 1rem;
+  box-sizing: border-box;
+  border-right: 1px solid #ddd; /* Light border between content and buttons */
+  overflow: hidden; /* Prevent overflow */
+}
+
+/* Button container */
+.button-group {
+  flex: 0 0 20%; /* Buttons take up 20% of the card width */
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Space buttons evenly */
+  box-sizing: border-box;
+}
+
+/* Ensure buttons are spaced evenly */
+.button-group .btn {
+  margin-bottom: 0.5rem; /* Space between buttons */
+}
+
+/* Additional styles for new content */
+.card-text {
+  margin-bottom: 0.5rem;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.card-text strong {
+  font-weight: bold;
+}

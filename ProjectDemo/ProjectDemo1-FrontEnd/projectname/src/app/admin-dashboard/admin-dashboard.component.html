@@ -1,0 +1,59 @@
+<div class="container-fluid">
+  <!-- Header -->
+  <header class="d-flex justify-content-between align-items-center py-3 border-bottom">
+    <div class="d-flex align-items-center">
+      <!-- Logo or Brand Name -->
+      <img src="assets/admin-logo.png" alt="Admin Logo" class="img-fluid" style="height: 40px;">
+      <h1 class="ms-3 mb-0">Dashboard</h1>
+    </div>
+    <!-- User or Notification Icons -->
+    <div>
+      <!-- Example: User Icon and Notification Bell -->
+      <a href="#" class="me-3"><i class="bi bi-person-circle"></i></a>
+      <a href="#"><i class="bi bi-bell"></i></a>
+    </div>
+  </header>
+
+  <div class="row">
+    <!-- Sidebar -->
+    <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+      <div class="sidebar-sticky">
+        <!-- Logo Section -->
+        <div class="d-flex justify-content-center my-3">
+          <img src="assets/admin-logo.png" alt="Admin Logo" class="img-fluid sidebar-logo">
+        </div>
+        
+        <h4 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          <span>Admin Dashboard</span>
+        </h4>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/dashboard/users" routerLinkActive="active">
+              Users
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/dashboard/rooms" routerLinkActive="active">
+              Rooms
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/dashboard/feedback" routerLinkActive="active">
+              Feedbacks
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/login" routerLinkActive="active">
+              Logout
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Main content -->
+    <main role="main" class="col-md-9 ms-sm-auto col-lg-10 px-4" id="main-content">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>
