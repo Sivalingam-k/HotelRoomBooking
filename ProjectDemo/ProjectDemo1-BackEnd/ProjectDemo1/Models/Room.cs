@@ -13,5 +13,6 @@
         public string Location { get; set; }
         public string Description { get; set; }
         public string Amenities { get; set; }
+        public bool IsBooked { get; set; }
     }
 }

@@ -1,0 +1,21 @@
+<h2>Room Status</h2>
+<div class="header">
+  <button (click)="showAvailableRooms()" [class.active]="displayedRooms === availableRooms">Available Rooms</button>
+  <button (click)="showBookedRooms()" [class.active]="displayedRooms === bookedRooms">Booked Rooms</button>
+</div>
+
+<div *ngIf="loading" class="text-center">Loading...</div>
+<div *ngIf="error" class="alert alert-danger text-center">{{ error }}</div>
+
+<!-- Display Room Numbers -->
+<div *ngIf="!loading && !error">
+  <ul class="room-list">
+    <li *ngFor="let room of displayedRooms">
+      <span class="badge">{{ room.roomNumber }}</span>
+    </li>
+  </ul>
+</div>
+
+  
+  <!-- Include the router outlet to display the routed components -->
+  <router-outlet></router-outlet>

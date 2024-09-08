@@ -1,0 +1,84 @@
+/* Ensure that the card takes up the full width of the container */
+.card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    height: 300px; /* Set a fixed height to ensure all cards are the same size */
+  }
+  
+  .card-content {
+    display: flex;
+    height: 100%;
+  }
+  
+  .card-image {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .card-image img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  .card-details {
+    flex: 2;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .card-header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .card-price {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .price-label {
+    display: block;
+    font-size: 0.875rem;
+  }
+  
+  .card-footer {
+    padding: 10px 15px;
+    background-color: black;
+    border-top: 1px solid #333;
+    text-align: center;
+  }
+  
+  .card-footer .text-white {
+    color: white;
+  }
+  
+  /* Ensure responsive design */
+  @media (max-width: 768px) {
+    .card {
+      height: auto; /* Allow height to adjust based on content */
+    }
+  
+    .card-content {
+      flex-direction: column;
+    }
+  
+    .card-image,
+    .card-details {
+      width: 100%;
+    }
+  
+    .card-image img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  

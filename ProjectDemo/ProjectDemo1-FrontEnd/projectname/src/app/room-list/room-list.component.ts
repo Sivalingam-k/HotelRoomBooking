@@ -16,6 +16,8 @@ export class RoomListComponent {
   roomTypes = ['Single Bed', 'Double Bed', 'Family Type'];
   selectedImage: File | null = null;
 
+
+
   constructor(private http: HttpClient,private router:Router,private modalService: NgbModal) {}
   
   openAddRoomModal() {
@@ -42,7 +44,10 @@ export class RoomListComponent {
 
   loadRooms(): void {
     this.http.get<Room[]>(`${this.apiUrl}/GetRooms`).subscribe(
-      (data: Room[]) => this.rooms = data,
+      (data: Room[]) => {
+        this.rooms = data;
+        
+      },
       error => console.error('Error loading rooms', error)
     );
   }
@@ -99,4 +104,5 @@ export class RoomListComponent {
     );
 
 }
+
 }

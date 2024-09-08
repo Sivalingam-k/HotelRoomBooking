@@ -4511,19 +4511,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Sivalingam.K\\.nuget\\packages\\": {}
+    "C:\\Users\\apkmk\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Sivalingam.K\\Downloads\\ProjectDemo\\ProjectDemo1-BackEnd\\ProjectDemo1\\ProjectDemo1.csproj",
+      "projectUniqueName": "C:\\Users\\apkmk\\Desktop\\RoomBooking\\Room_Booking_System\\ProjectDemo\\ProjectDemo1-BackEnd\\ProjectDemo1\\ProjectDemo1.csproj",
       "projectName": "ProjectDemo1",
-      "projectPath": "C:\\Users\\Sivalingam.K\\Downloads\\ProjectDemo\\ProjectDemo1-BackEnd\\ProjectDemo1\\ProjectDemo1.csproj",
-      "packagesPath": "C:\\Users\\Sivalingam.K\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Sivalingam.K\\Downloads\\ProjectDemo\\ProjectDemo1-BackEnd\\ProjectDemo1\\obj\\",
+      "projectPath": "C:\\Users\\apkmk\\Desktop\\RoomBooking\\Room_Booking_System\\ProjectDemo\\ProjectDemo1-BackEnd\\ProjectDemo1\\ProjectDemo1.csproj",
+      "packagesPath": "C:\\Users\\apkmk\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\apkmk\\Desktop\\RoomBooking\\Room_Booking_System\\ProjectDemo\\ProjectDemo1-BackEnd\\ProjectDemo1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Sivalingam.K\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\apkmk\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

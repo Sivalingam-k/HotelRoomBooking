@@ -10,5 +10,8 @@ namespace ProjectDemo1.Models
 
         public DbSet<User> Users { get; set; }
         public DbSet<Room> Rooms { get; set; }
+        public DbSet<Feedback> Feedbacks { get; set; }
+        public DbSet<RoomService> roomServices { get; set; }
+        public DbSet<PaymentTransaction> PaymentTransactions { get; set; }
     }
 }

@@ -1,0 +1,48 @@
+<!-- <div *ngIf="loading" class="text-center">Loading...</div>
+<div *ngIf="error" class="alert alert-danger text-center">{{ error }}</div>
+<div *ngIf="!loading && !error" class="container">
+  <div class="row">
+    <div *ngFor="let room of bookedRooms" class="col-md-4 mb-4">
+      <div class="card">
+        <img [src]="room.imagePath" class="card-img-top" alt="Room image">
+        <div class="card-body">
+          <div class="card-header-content">
+            <span class="badge card-price">{{ room.price }}</span>
+            <span class="price-label">Per Night</span>
+          </div>
+          <p class="card-text">More details about the room can go here.</p>
+        </div>
+        <div class="card-footer">
+          <small class="text-white">{{ room.roomType }}</small>
+          <span class="text-white">Booked</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+<div *ngIf="loading" class="text-center">Loading...</div>
+<div *ngIf="error" class="alert alert-danger text-center">{{ error }}</div>
+<div *ngIf="!loading && !error" class="container">
+  <div class="row">
+    <div *ngFor="let room of bookedRooms" class="col-md-12 mb-4">
+      <div class="card">
+        <div class="card-content">
+          <div class="card-image">
+            <img [src]="room.imagePath" class="card-img-top" alt="Room image">
+          </div>
+          <div class="card-details">
+            <div class="card-header-content">
+              <span class=" card-price">{{ room.price }}</span>
+              <span class="price-label">Per Night</span>
+            </div>
+            
+          </div>
+        </div>
+        <div class="card-footer">
+          <small class="text-white">{{ room.roomType }}</small>
+          <span class="text-white">Booked</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

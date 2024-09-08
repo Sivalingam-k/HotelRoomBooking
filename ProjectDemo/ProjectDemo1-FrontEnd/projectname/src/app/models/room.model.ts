@@ -11,5 +11,17 @@ export interface Room {
     description:string,
     amenities?: string;
 }
+export class RoomService {
+    Id?: number;
+    StaffName?: string;
+    Email?: string;
+    Contact?: number;
+    Address?: string;
+    Rating?: number;
+    IsAvailable?: string;
+    Aadhar?: number;
+    ImagePath?: string;
+    JoinedDate?: Date;
+  }
   
   

@@ -1,0 +1,47 @@
+.header {
+    margin-bottom: 20px;
+  }
+  
+  .header button {
+    margin-right: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+  }
+  
+  .header button.active {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .header button:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .room-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .room-list li {
+    margin: 10px 0;
+  }
+  
+  .badge {
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  .badge {
+    background-color: yellow; /* Default badge color, change if needed */
+    color: black;
+  }
+  
+  .badge-success {
+    background-color: green;
+    color: white;
+  }
+  

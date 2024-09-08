@@ -1,0 +1,115 @@
+<div *ngIf="loading" class="text-center">Loading...</div>
+<div *ngIf="error" class="alert alert-danger text-center">{{ error }}</div>
+<div *ngIf="!loading && !error" class="container">
+  <div class="row">
+    <div *ngFor="let room of rooms" class="col-md-4 mb-4">
+      <div class="card">
+        <img [src]="room.imagePath" class="card-img-top" alt="Room image">
+        <div class="card-body">
+          <div class="card-header-content">
+            <span class="badge card-price">{{ room.price }}</span>
+            <span class="price-label">Per Night</span>
+          </div>
+          <p class="card-text">More details about the room can go here.</p>
+          <!-- Trigger modal on button click -->
+          <button 
+            (click)="openModal(modalContent, room)" 
+            class="btn btn-primary btn-block" 
+            [disabled]="room.isBooked">
+            {{ room.isBooked ? 'Booked' : 'View Details' }}
+          </button>
+        </div>
+        <div class="card-footer">
+          <small class="text-white">{{ room.roomType }}</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Room Details Modal -->
+<ng-template #modalContent let-modal>
+  <div class="modal-header">
+    <div class="marquee-container">
+      <marquee>BOOK NOW !!! ENJOY THE MOON!!!</marquee>
+    </div>
+  </div>
+  <div class="modal-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <img [src]="selectedRoom?.imagePath" class="img-fluid" alt="Room image">
+        </div>
+        <div class="col-md-4">
+          <div class="details-box">
+            <p><strong>Price:</strong> {{ selectedRoom?.price }} per night</p>
+            <p><strong>Type:</strong> {{ selectedRoom?.roomType }}</p>
+            <p><strong>Description:</strong> {{ selectedRoom?.description }}</p>
+            <p><strong>Location:</strong> {{ selectedRoom?.location }}</p>
+            <p><strong>Amenities:</strong> {{ selectedRoom?.amenities }}</p>
+            <p><strong>Rating:</strong> {{ selectedRoom?.rating }}</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="price-details">
+            <h4 class="text-center">{{ selectedRoom?.price }}</h4>
+            <p class="text-center">Per Night</p>
+            <button 
+              type="button" 
+              class="btn btn-success btn-block" 
+              (click)="openPaymentModal()" 
+              [disabled]="selectedRoom?.isBooked">
+              {{ selectedRoom?.isBooked ? 'Booked' : 'Book Now' }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Close click')">Close</button>
+  </div>
+</ng-template>
+
+<!-- Payment Modal -->
+<ng-template #paymentModalTemplate let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title">Payment Details</h5>
+    <button type="button" class="close" aria-label="Close" (click)="modal.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form (ngSubmit)="processPayment()" [formGroup]="paymentForm">
+      <div class="form-group">
+        <label for="amount">Amount</label>
+        <input type="text" id="amount" class="form-control" [value]="selectedRoom?.price" disabled>
+      </div>
+      <div class="form-group">
+        <label for="cardNumber">Card Number</label>
+        <input type="text" id="cardNumber" class="form-control" formControlName="cardNumber">
+        <div *ngIf="paymentForm.get('cardNumber')?.invalid && paymentForm.get('cardNumber')?.touched" class="text-danger">
+          Card number is required and must be 16 digits.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="expiryDate">Expiry Date</label>
+        <input type="text" id="expiryDate" class="form-control" formControlName="expiryDate">
+        <div *ngIf="paymentForm.get('expiryDate')?.invalid && paymentForm.get('expiryDate')?.touched" class="text-danger">
+          Expiry date is required and must be in MM/YY format.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="cvv">CVV</label>
+        <input type="text" id="cvv" class="form-control" formControlName="cvv">
+        <div *ngIf="paymentForm.get('cvv')?.invalid && paymentForm.get('cvv')?.touched" class="text-danger">
+          CVV is required and must be 3 digits.
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="paymentForm.invalid">Pay</button>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modal.hide()">Close</button>
+  </div>
+</ng-template>

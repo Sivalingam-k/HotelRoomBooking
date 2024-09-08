@@ -1,0 +1,54 @@
+<!-- staff-modal.component.html -->
+<div class="modal-header">
+  <h5 class="modal-title">{{ mode === 'create' ? 'Add Staff' : 'Edit Staff' }}</h5>
+  <button type="button" class="close" aria-label="Close" (click)="close()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<form (ngSubmit)="save()">
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="staffName">Name</label>
+      <input type="text" class="form-control" id="staffName" [(ngModel)]="staff.staffName" name="staffName" required>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" id="email" [(ngModel)]="staff.email" name="email" required>
+    </div>
+
+    <div class="form-group">
+      <label for="contact">Contact</label>
+      <input type="number" class="form-control" id="contact" [(ngModel)]="staff.contact" name="contact" required>
+    </div>
+
+    <div class="form-group">
+      <label for="address">Address</label>
+      <input type="text" class="form-control" id="address" [(ngModel)]="staff.address" name="address">
+    </div>
+
+    <div class="form-group">
+      <label for="rating">Rating</label>
+      <input type="number" class="form-control" id="rating" [(ngModel)]="staff.rating" name="rating" min="0" max="5">
+    </div>
+
+    <div class="form-group">
+      <label for="isAvailable">Available</label>
+      <input type="text" class="form-control" id="isAvailable" [(ngModel)]="staff.isAvailable" name="isAvailable">
+    </div>
+
+    <div class="form-group">
+      <label for="aadhar">Aadhar</label>
+      <input type="number" class="form-control" id="aadhar" [(ngModel)]="staff.aadhar" name="aadhar">
+    </div>
+
+    <div class="form-group">
+      <label for="imagePath">Image Path</label>
+      <input type="text" class="form-control" id="imagePath" [(ngModel)]="staff.imagePath" name="imagePath">
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="close()">Cancel</button>
+    <button type="submit" class="btn btn-primary">{{ mode === 'create' ? 'Add' : 'Update' }}</button>
+  </div>
+</form>
