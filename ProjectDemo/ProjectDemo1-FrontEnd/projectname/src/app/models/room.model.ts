@@ -4,7 +4,10 @@ export interface Room {
     roomType: string;
     price: number;
     ISAvailable: boolean;
-    imagePath?: string; 
+    imagePath?: string;
+    bathRoom:string; 
+    hall:string; 
+    bedRoom:string; 
     editMode?: boolean; 
     rating :number;
     location:string; 

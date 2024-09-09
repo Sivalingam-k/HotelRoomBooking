@@ -48,7 +48,8 @@ namespace ProjectDemo1.Controllers
                 FirstName = registration.FirstName,
                 LastName = registration.LastName,
                 Email = registration.Email,
-                Password = registration.Password  // Store plaintext password
+                Password = registration.Password , // Store plaintext password
+                Role = registration.Email == "admin123@gmail.com" ? "admin" : "user"
             };
 
             try
@@ -65,7 +66,6 @@ namespace ProjectDemo1.Controllers
             }
         }
 
-
         [HttpPost]
         [Route("Login")]
         public IActionResult Login([FromBody] Login login)
@@ -73,40 +73,102 @@ namespace ProjectDemo1.Controllers
             var user = dbContext.Users.FirstOrDefault(x => x.Email == login.Email && x.Password == login.Password);
             if (user != null)
             {
-                //if user is valid we have to claims some 
+                // Assign role based on email
+                string role = user.Email == "admin123@gmail.com" ? "admin" : "user";
+
                 var claims = new[]
                 {
-                    new Claim(JwtRegisteredClaimNames.Sub,configuration["Jwt:Subject"]),
-                    new Claim(JwtRegisteredClaimNames.Jti,Guid.NewGuid().ToString()),
-                    new Claim("UserId",user.Id.ToString()),
-                    new Claim("Email",user.Email.ToString())
-                };
-                var Key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]));
-                var signIn=new SigningCredentials(Key,SecurityAlgorithms.HmacSha256);
+            new Claim(JwtRegisteredClaimNames.Sub, configuration["Jwt:Subject"]),
+            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+            new Claim("UserId", user.Id.ToString()),
+            new Claim("Email", user.Email),
+            new Claim("Role", role) // Use the determined role
+        };
+
+                var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]));
+                var signIn = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
                 var token = new JwtSecurityToken(
-                    configuration["Jwt:Issuer"],
-                    configuration["Jwt:Audience"],
-                    claims,
+                    issuer: configuration["Jwt:Issuer"],
+                    audience: configuration["Jwt:Audience"],
+                    claims: claims,
                     expires: DateTime.UtcNow.AddHours(24),
                     signingCredentials: signIn
-                    );
-                string tokenValue=new JwtSecurityTokenHandler().WriteToken(token); 
-                return Ok(new {Token=tokenValue,User=user,access= tokenValue });
-                //return Ok(user);
+                );
+
+                string tokenValue = new JwtSecurityTokenHandler().WriteToken(token);
+
+                return Ok(new
+                {
+                    Token = tokenValue,
+                    User = new
+                    {
+                        Id = user.Id,
+                        Email = user.Email,
+                        Role = role // Ensure role is included
+                    }
+                });
             }
+
             return Unauthorized();
         }
 
+
+
+        //[HttpPost]
+        //[Route("Login")]
+        //public IActionResult Login([FromBody] Login login)
+        //{
+        //    var user = dbContext.Users.FirstOrDefault(x => x.Email == login.Email && x.Password == login.Password);
+        //    if (user != null)
+        //    {
+        //        //if user is valid we have to claims some 
+        //        var claims = new[]
+        //        {
+        //            new Claim(JwtRegisteredClaimNames.Sub,configuration["Jwt:Subject"]),
+        //            new Claim(JwtRegisteredClaimNames.Jti,Guid.NewGuid().ToString()),
+        //            new Claim("UserId",user.Id.ToString()),
+        //            new Claim("Email",user.Email.ToString())
+        //        };
+        //        var Key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]));
+        //        var signIn=new SigningCredentials(Key,SecurityAlgorithms.HmacSha256);
+        //        var token = new JwtSecurityToken(
+        //            configuration["Jwt:Issuer"],
+        //            configuration["Jwt:Audience"],
+        //            claims,
+        //            expires: DateTime.UtcNow.AddHours(24),
+        //            signingCredentials: signIn
+        //            );
+        //        string tokenValue=new JwtSecurityTokenHandler().WriteToken(token); 
+        //        return Ok(new {Token=tokenValue,User=user,access= tokenValue });
+        //        //return Ok(user);
+        //    }
+        //    return Unauthorized();
+        //}
+
+        //[HttpGet]
+        //[Route("GetUsers")]
+        //public async Task<IActionResult> GetUsers()
+        //{
+        //    var users = await dbContext.Users.ToListAsync();
+        //    return Ok(new
+        //    {
+        //        users
+        //    });
+        //}
         [HttpGet]
         [Route("GetUsers")]
         public async Task<IActionResult> GetUsers()
         {
-            var users = await dbContext.Users.ToListAsync();
+            var users = await dbContext.Users
+                .Where(u => u.Role != "admin") // Exclude admins
+                .ToListAsync();
+
             return Ok(new
             {
                 users
             });
         }
+
 
         [HttpGet()]
         [Route("GetUserById/{id}")]
@@ -176,5 +238,29 @@ namespace ProjectDemo1.Controllers
             return dbContext.Users.Any(e => e.Id == id);
         }
 
+        [HttpDelete]
+        [Route("DeleteUser/{id}")]
+        public async Task<IActionResult> DeleteUser(int id)
+        {
+
+            try
+            {
+                var users = await dbContext.Users.FindAsync(id);
+                if (users == null)
+                {
+                    return NotFound();
+                }
+                dbContext.Users.Remove(users);
+                await dbContext.SaveChangesAsync();
+                return NoContent();
+    
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Error deleting user: {ex.Message}");
+            }
+        }
+
     }
+    
 }

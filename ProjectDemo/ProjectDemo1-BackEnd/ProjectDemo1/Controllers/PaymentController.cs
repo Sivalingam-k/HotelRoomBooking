@@ -64,8 +64,29 @@ namespace ProjectDemo1.Controllers
 
             return Ok(bookedRooms);
         }
-        
 
+        [HttpGet]
+        [Route("GetBookedRoomsPayments")]
+        public async Task<IActionResult> GetBookedRoomsPayments()
+        {
+            var bookedRooms = await dbContext.Rooms
+                .Join(
+                    dbContext.PaymentTransactions,
+                    room => room.Id,
+                    payment => payment.RoomId,
+                    (room, payment) => new
+                    {
+                        
+                        room.RoomNumber,
+                        payment.Amount,
+                        payment.Date
+                    }
+                )
+                .Where(rp => rp.Amount > 0) // Ensure there is a payment amount
+                .ToListAsync();
+
+            return Ok(bookedRooms);
+        }
         [HttpPost]
         [Route("ProcessPayment")]
         public async Task<IActionResult> ProcessPayment([FromBody] PaymentRequest paymentRequest)

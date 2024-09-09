@@ -1,1 +1,23 @@
-<p>payment works!</p>
+<div *ngIf="loading" class="text-center">Loading...</div>
+<div *ngIf="error" class="alert alert-danger text-center">{{ error }}</div>
+<div *ngIf="!loading && !error" class="container">
+  <h2 class="text-center">Booked Rooms</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        
+        <th>Room Number</th>
+        <th>Amount</th>
+        <th>Date | Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let room of bookedRoomsPayments">
+      
+        <td>{{ room.roomNumber }}</td>
+        <td>{{ room.amount | currency }}</td>
+        <td>{{ room.date | date:'short' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

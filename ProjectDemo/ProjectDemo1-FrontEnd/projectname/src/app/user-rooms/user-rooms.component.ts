@@ -55,7 +55,6 @@ export class UserRoomsComponent implements OnInit {
 
   processPayment(): void {
     if (this.paymentForm.invalid) {
-      // Mark all fields as touched to show validation errors
       this.paymentForm.markAllAsTouched();
       return;
     }

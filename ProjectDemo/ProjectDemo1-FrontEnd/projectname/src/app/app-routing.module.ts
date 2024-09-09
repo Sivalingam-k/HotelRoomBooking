@@ -14,9 +14,11 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import { UserRoomsComponent } from './user-rooms/user-rooms.component';
 import { BookedRoomsComponent } from './booked-rooms/booked-rooms.component';
 import { RoomStatusComponent } from './room-status/room-status.component';
+import { PaymentComponent } from './payment/payment.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
+  { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },
   
   {
@@ -30,6 +32,7 @@ const routes: Routes = [
       { path: 'feedback', component: FeedbackComponent },
       {path:'roomstatus',component:RoomStatusComponent},
       {path:'bookedrooms',component:BookedRoomsComponent},
+      {path:'payment',component:PaymentComponent},
       { path: '', redirectTo: 'users', pathMatch: 'full' }
     ]
   },

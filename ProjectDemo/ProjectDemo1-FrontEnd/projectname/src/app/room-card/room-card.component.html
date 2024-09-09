@@ -1,12 +1,19 @@
 <div class="card mb-3 room-card">
   <div class="row no-gutters">
     
-    <!-- Image Container -->
     <div class="col-md-4 image-container">
       <ng-container *ngIf="room">
         <img *ngIf="room.imagePath" [src]="room.imagePath" class="card-img" alt="Room Image">
+        
+        <!-- Small Images Section -->
+        <div class="small-images-container">
+          <img *ngIf="room.bathRoom" [src]="room.bathRoom" class="small-img" alt="Small Image 1">
+          <img *ngIf="room.hall" [src]="room.hall" class="small-img" alt="Small Image 2">
+          <img *ngIf="room.bedRoom" [src]="room.bedRoom" class="small-img" alt="Small Image 3">
+        </div>
       </ng-container>
     </div>
+
     <!-- Content Container -->
     <div class="col-md-4 content-container">
       <div class="card-body">

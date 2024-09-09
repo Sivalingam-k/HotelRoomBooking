@@ -6,12 +6,6 @@
       
     </div>
   </div>
-    
-
-    
- 
-
-
   <div class="row">
     <div class="col-md-12" *ngFor="let room of rooms"> <!-- Ensure 'rooms' is defined in the component -->
       <div class="card mb-3 room-card">
@@ -24,16 +18,29 @@
             </ng-container>
           </div>
           
-         <!-- Static Content -->
-          <div class="col-md-4 static-content-container">
-            <div class="offer-info">
-             
-              <h4>Amenities:</h4>
-              <p *ngIf="room.amenities">
-                <span class="icon-check">&#10004;</span> {{ room.amenities }}
-              </p>
-            </div>
+         <!-- Central Images -->
+         <div class="col-md-4 central-images-container">
+          <div class="central-images">
+            <ng-container *ngIf="room.bathRoom">
+              <div class="image-wrapper">
+                <img [src]="room.bathRoom" class="small-image" alt="Bathroom Image">
+                <p>Bathroom</p>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="room.hall">
+              <div class="image-wrapper">
+                <img [src]="room.hall" class="small-image" alt="Hall Image">
+                <p>Hall</p>
+              </div>
+            </ng-container>
+            <ng-container *ngIf="room.bedRoom">
+              <div class="image-wrapper">
+                <img [src]="room.bedRoom" class="small-image" alt="Bedroom Image">
+                <p>Bedroom</p>
+              </div>
+            </ng-container>
           </div>
+        </div>
           
           <!-- Content Container -->
           <div class="col-md-4 content-container">

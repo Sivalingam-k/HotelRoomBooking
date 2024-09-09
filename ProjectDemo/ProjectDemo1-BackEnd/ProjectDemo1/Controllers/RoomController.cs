@@ -94,7 +94,18 @@ namespace ProjectDemo1.Controllers
             {
                 existingRoom.ImagePath = updatedRoom.ImagePath;
             }
-
+            if (!string.IsNullOrEmpty(updatedRoom.BathRoom))
+            {
+                existingRoom.BathRoom = updatedRoom.BathRoom;
+            }
+            if (!string.IsNullOrEmpty(updatedRoom.Hall))
+            {
+                existingRoom.Hall = updatedRoom.Hall;
+            }
+            if (!string.IsNullOrEmpty(updatedRoom.BedRoom))
+            {
+                existingRoom.BedRoom = updatedRoom.BedRoom;
+            }
             // Save changes to the database
             dbContext.Rooms.Update(existingRoom);
             await dbContext.SaveChangesAsync();

@@ -9,5 +9,6 @@
         public String Password { get; set; }
         public int IsActive { get; set; } = 1;
         public DateTime CreatedOn { get; set; } = DateTime.Now.Date;
+        public string Role { get; set; }
     }
 }

@@ -35,8 +35,12 @@ export class UsersComponent implements OnInit {
   }
 
   deleteUser(id: number): void {
-    console.log('Delete user with ID:', id);
-    // Implement delete functionality
+    window.alert('are you want to delete the user');
+    this.http.delete(`http://localhost:5046/api/Users/DeleteUser/${id}`)
+    .subscribe(
+      () => this.loadUsers(),
+      
+    );
   }
   
 }

@@ -14,5 +14,8 @@
         public string Description { get; set; }
         public string Amenities { get; set; }
         public bool IsBooked { get; set; }
+        public string BathRoom { get; set; }
+        public string Hall { get; set; }
+        public string BedRoom { get; set; }
     }
 }
