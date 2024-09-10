@@ -33,88 +33,103 @@ namespace ProjectDemo1.Controllers
         }
         [HttpPost]
         [Route("CreateStaff")]
-        public async Task<IActionResult> CreateStaff([FromBody] RoomService roomService)
+        public async Task<IActionResult> CreateStaff([FromForm] RoomServiceDto roomServiceDto)
         {
-            if (roomService == null)
+            byte[] imagebytes = null;
+            if (roomServiceDto == null)
             {
-                return BadRequest("staff data is null.");
+                return BadRequest("Staff data is null.");
             }
 
             if (!ModelState.IsValid)
             {
                 return BadRequest("Invalid staff data.");
             }
-            var emailLower = roomService.Email.ToLower();
 
-            if (await dbContext.roomServices.AnyAsync(s => s.Email.ToLower() == emailLower))
+            // Handle file upload
+            if (roomServiceDto.ImageData != null && roomServiceDto.ImageData.Length > 0)
             {
-                return BadRequest("Email already exists.");
+                
+                using (var memoryStream = new MemoryStream())
+                {
+                    await roomServiceDto.ImageData.CopyToAsync(memoryStream);
+                    imagebytes = memoryStream.ToArray();  // Store the image as byte array
+                }
             }
-          var roomservice=new RoomService
-            {
-                StaffName = roomService.StaffName,
-                Address = roomService.Address,
-                Email = roomService.Email,
-                IsAvailable = roomService.IsAvailable , 
-                Contact=roomService.Contact,
-              Rating=roomService.Rating,
-              Aadhar=roomService.Aadhar,
-              ImagePath=roomService.ImagePath,
-              JoinedDate=roomService.JoinedDate
-          };
 
             try
             {
-                dbContext.roomServices.Add(roomservice);
+
+                var roomService = new RoomService()
+                {
+                      StaffName = roomServiceDto.StaffName,
+        Email = roomServiceDto.Email, 
+        Contact = roomServiceDto.Contact,
+        Address = roomServiceDto.Address, 
+         Rating = roomServiceDto.Rating, 
+         IsAvailable = roomServiceDto.IsAvailable, 
+        Aadhar = roomServiceDto.Aadhar, 
+        ImagePath = imagebytes
+
+    };
+                dbContext.roomServices.Add(roomService);
                 await dbContext.SaveChangesAsync();
-                return Ok(new { Message = "Staff added successful" });
+                return Ok(new { Message = "Staff added successfully!" });
             }
             catch (Exception ex)
             {
-                // Log the exception (you might use a logging framework here)
-                Console.WriteLine($"Exception: {ex.Message}");
-                return StatusCode(500, new { Message = "Internal server error", Details = ex.Message });
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Error adding staff: {ex.Message}");
             }
-          
         }
 
-        [HttpPut]
-        [Route("UpdateStaff/{id}")]
-        public async Task<IActionResult> UpdateStaff(int id, [FromBody] RoomService roomService)
+
+
+        [HttpPut("UpdateStaff/{id}")]
+        public async Task<IActionResult> UpdateStaff(int id, [FromForm] RoomServiceDto roomServiceDto)
         {
-            if (id != roomService.Id)
+            byte[] imagebytes = null;
+
+            if (id != roomServiceDto.Id)
             {
                 return BadRequest("Staff ID mismatch");
             }
 
-            // Check if the updated room model is valid
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
 
-            // Find the existing room by ID
-            var existingstaff = await dbContext.roomServices.FindAsync(id);
-            if (existingstaff == null)
+            var existingStaff = await dbContext.roomServices.FindAsync(id);
+            if (existingStaff == null)
             {
                 return NotFound();
             }
 
-            // Update the existing room with new values
-            existingstaff.StaffName = roomService.StaffName;
-            existingstaff.Address = roomService.Address;
-            existingstaff.Contact = roomService.Contact;
-            existingstaff.Email = roomService.Email;
-            existingstaff.Rating = roomService.Rating;
-            existingstaff.IsAvailable = roomService.IsAvailable;
-            existingstaff.ImagePath = roomService.ImagePath;
+            existingStaff.StaffName = roomServiceDto.StaffName;
+            existingStaff.Address = roomServiceDto.Address;
+            existingStaff.Contact = roomServiceDto.Contact;
+            existingStaff.Email = roomServiceDto.Email;
+            existingStaff.Rating = roomServiceDto.Rating;
+            existingStaff.IsAvailable = roomServiceDto.IsAvailable;
+            existingStaff.Aadhar = roomServiceDto.Aadhar;
+            if (roomServiceDto.ImageData != null && roomServiceDto.ImageData.Length > 0)
+            {
 
-            // Save changes to the database
-            dbContext.roomServices.Update(existingstaff);
+                using (var memoryStream = new MemoryStream())
+                {
+                    await roomServiceDto.ImageData.CopyToAsync(memoryStream);
+                    imagebytes = memoryStream.ToArray();  // Store the image as byte array
+                }
+            }
+            existingStaff.ImagePath = imagebytes;
+            
+            dbContext.roomServices.Update(existingStaff);
             await dbContext.SaveChangesAsync();
 
             return NoContent();
         }
+
+
 
         [HttpDelete]
         [Route("DeleteStaff/{id}")]

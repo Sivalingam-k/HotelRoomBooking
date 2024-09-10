@@ -15,16 +15,17 @@ export interface Room {
     amenities?: string;
 }
 export class RoomService {
-    Id?: number;
-    StaffName?: string;
-    Email?: string;
-    Contact?: number;
-    Address?: string;
-    Rating?: number;
-    IsAvailable?: string;
-    Aadhar?: number;
-    ImagePath?: string;
-    JoinedDate?: Date;
+    id?: number;
+    staffName?: string;
+    email?: string;
+    contact?: number;
+    address?: string;
+    rating?: number;
+    isAvailable?: string;
+    aadhar?: number;
+    imagePath?: string;
+    joinedDate?: Date;
+    imageData?: File;
   }
   
   

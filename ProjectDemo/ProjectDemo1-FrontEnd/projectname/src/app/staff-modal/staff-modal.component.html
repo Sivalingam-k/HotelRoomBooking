@@ -5,7 +5,7 @@
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
-<form (ngSubmit)="save()">
+<form (ngSubmit)="save()" #staffForm="ngForm" enctype="multipart/form-data">
   <div class="modal-body">
     <div class="form-group">
       <label for="staffName">Name</label>
@@ -43,9 +43,14 @@
     </div>
 
     <div class="form-group">
-      <label for="imagePath">Image Path</label>
-      <input type="text" class="form-control" id="imagePath" [(ngModel)]="staff.imagePath" name="imagePath">
+      <label for="imagePath">Image</label>
+      <input type="file" class="form-control-file" id="imagePath" (change)="onFileChange($event)">
     </div>
+
+    <!-- Display image preview if available -->
+    <!-- <div *ngIf="previewImage">
+      <img [src]="previewImage" alt="Image preview" style="max-width: 100%; height: auto;">
+    </div> -->
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-secondary" (click)="close()">Cancel</button>
