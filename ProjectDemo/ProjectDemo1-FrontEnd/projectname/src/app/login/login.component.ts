@@ -26,17 +26,14 @@ export class LoginComponent {
           const token = response.body?.token;
 
           if (user && token) {
-            // Store the token in localStorage
-            localStorage.setItem('authToken', token);
+            sessionStorage.setItem('authToken', token);
 
-            // Debug output to check role
             console.log('User role:', user.role);
 
-            // Navigate based on user role
             if (user.role === 'admin') {
-              this.router.navigate(['/dashboard']); // Adjust the path if needed
+              this.router.navigate(['/dashboard']);
             } else {
-              this.router.navigate(['/userdashboard']); // Adjust the path if needed
+              this.router.navigate(['/userdashboard']);
             }
 
             window.alert('Login successful');
@@ -45,12 +42,16 @@ export class LoginComponent {
           }
         },
         error: (error: HttpErrorResponse) => {
+          console.error('Login error:', error);
           if (error.status === 401) {
             window.alert('Invalid credentials');
+          } else if (error.status === 400) {
+            window.alert('Bad request. Please check your input.');
+          } else if (error.status === 500) {
+            window.alert('Server error. Please try again later.');
           } else {
-            window.alert('An error occurred');
+            window.alert('An unexpected error occurred');
           }
-          console.error('Login error', error);
         }
       });
     } else {

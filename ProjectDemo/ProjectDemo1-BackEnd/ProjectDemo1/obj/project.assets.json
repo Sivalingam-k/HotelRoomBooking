@@ -4516,11 +4516,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Sivalingam.K\\Downloads\\Room_Booking_System\\ProjectDemo\\ProjectDemo1-BackEnd\\ProjectDemo1\\ProjectDemo1.csproj",
+      "projectUniqueName": "C:\\Users\\Sivalingam.K\\Downloads\\Room_Booking_final_3\\HotelRoomBooking\\ProjectDemo\\ProjectDemo1-BackEnd\\ProjectDemo1\\ProjectDemo1.csproj",
       "projectName": "ProjectDemo1",
-      "projectPath": "C:\\Users\\Sivalingam.K\\Downloads\\Room_Booking_System\\ProjectDemo\\ProjectDemo1-BackEnd\\ProjectDemo1\\ProjectDemo1.csproj",
+      "projectPath": "C:\\Users\\Sivalingam.K\\Downloads\\Room_Booking_final_3\\HotelRoomBooking\\ProjectDemo\\ProjectDemo1-BackEnd\\ProjectDemo1\\ProjectDemo1.csproj",
       "packagesPath": "C:\\Users\\Sivalingam.K\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Sivalingam.K\\Downloads\\Room_Booking_System\\ProjectDemo\\ProjectDemo1-BackEnd\\ProjectDemo1\\obj\\",
+      "outputPath": "C:\\Users\\Sivalingam.K\\Downloads\\Room_Booking_final_3\\HotelRoomBooking\\ProjectDemo\\ProjectDemo1-BackEnd\\ProjectDemo1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Sivalingam.K\\AppData\\Roaming\\NuGet\\NuGet.Config",

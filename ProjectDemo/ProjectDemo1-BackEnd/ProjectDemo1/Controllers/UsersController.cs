@@ -24,7 +24,7 @@ namespace ProjectDemo1.Controllers
         public UsersController(ProjectDbContext dbContext, IConfiguration configuration)
         {
             this.dbContext = dbContext;
-           this.configuration = configuration;
+            this.configuration = configuration;
         }
 
         [HttpPost]
@@ -48,7 +48,7 @@ namespace ProjectDemo1.Controllers
                 FirstName = registration.FirstName,
                 LastName = registration.LastName,
                 Email = registration.Email,
-                Password = registration.Password , // Store plaintext password
+                Password = registration.Password, // Store plaintext password
                 Role = registration.Email == "admin123@gmail.com" ? "admin" : "user"
             };
 
@@ -112,6 +112,12 @@ namespace ProjectDemo1.Controllers
             return Unauthorized();
         }
 
+        [HttpPost("logout")]
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear(); // Clear the session
+            return Ok();
+        }
 
 
         //[HttpPost]
@@ -157,6 +163,7 @@ namespace ProjectDemo1.Controllers
         //}
         [HttpGet]
         [Route("GetUsers")]
+        [Authorize]
         public async Task<IActionResult> GetUsers()
         {
             var users = await dbContext.Users
@@ -253,7 +260,7 @@ namespace ProjectDemo1.Controllers
                 dbContext.Users.Remove(users);
                 await dbContext.SaveChangesAsync();
                 return NoContent();
-    
+
             }
             catch (Exception ex)
             {
@@ -262,5 +269,5 @@ namespace ProjectDemo1.Controllers
         }
 
     }
-    
+
 }

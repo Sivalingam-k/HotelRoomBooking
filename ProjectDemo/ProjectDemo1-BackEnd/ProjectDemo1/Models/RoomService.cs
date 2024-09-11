@@ -10,7 +10,7 @@
         public int Rating { get; set; }
         public string IsAvailable { get; set; }
         public long Aadhar {  get; set; }
-        public byte[] ImagePath { get; set; }
+        public string ImagePath { get; set; }
         public DateTime JoinedDate { get; set; } = DateTime.Now.Date;
     }
 }

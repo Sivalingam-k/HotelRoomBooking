@@ -1,0 +1,98 @@
+.about-section {
+    padding: 40px 20px;
+    text-align: center;
+  }
+  
+  .about-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    font-weight: bold;
+    padding-top:40px;
+    color:green;
+  }
+  
+  .about-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+  }
+  
+  .about-image {
+    flex: 1;
+    max-width: 45%;
+    min-width: 300px;
+  }
+  
+  .about-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  .about-text {
+    flex: 1;
+    max-width: 50%;
+    min-width: 300px;
+    text-align: left; /* Align text to the left within the text container */
+  }
+  
+  .about-text h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .about-text p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+  }
+  
+  .about-text h3 {
+    font-size: 1.5rem;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .about-text ul {
+    list-style-type: none;
+    padding: 0;
+    margin-left: 0; /* Ensure the list stays aligned under the title */
+  }
+  
+  .about-text ul li {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    line-height: 1.4;
+    display: flex;
+    align-items: center;
+  }
+  
+  .about-text ul li i {
+    color: #3498db; /* Customize the icon color */
+    margin-right: 10px;
+    font-size: 1.2rem;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .about-container {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .about-image, .about-text {
+      max-width: 100%;
+    }
+  
+    .about-text h2 {
+      font-size: 1.8rem;
+    }
+  
+    .about-text h3 {
+      font-size: 1.4rem;
+    }
+  
+    .about-text ul {
+      text-align: left; /* Keeps the list aligned properly on smaller screens */
+    }
+  }

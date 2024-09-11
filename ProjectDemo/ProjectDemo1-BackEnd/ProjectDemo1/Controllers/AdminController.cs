@@ -81,8 +81,8 @@ namespace ProjectDemo1.Controllers
             }
 
             // Update the existing room with new values
-            existingFeedback.FirstName = feedback.FirstName;
-            existingFeedback.LastName = feedback.LastName;
+            existingFeedback.Name = feedback.Name;
+            existingFeedback.Email = feedback.Email;
             existingFeedback.PhoneNumber = feedback.PhoneNumber;
             existingFeedback.message = feedback.message;
 

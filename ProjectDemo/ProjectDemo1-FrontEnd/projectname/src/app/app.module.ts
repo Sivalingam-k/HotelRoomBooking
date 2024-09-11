@@ -36,6 +36,15 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { BookedRoomsComponent } from './booked-rooms/booked-rooms.component';
 import { RoomStatusComponent } from './room-status/room-status.component';
 import { PaymentComponent } from './payment/payment.component';
+import { LanpageComponent } from './lanpage/lanpage.component';
+import { HeaderComponent } from './header/header.component';
+import { ContactComponent } from './contact/contact.component';
+import { AboutComponent } from './about/about.component';
+import { HomeComponent } from './home/home.component';
+import { PartnersComponent } from './partners/partners.component';
+import { FooterComponent } from './footer/footer.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,6 +65,13 @@ import { PaymentComponent } from './payment/payment.component';
     BookedRoomsComponent,
     RoomStatusComponent,
     PaymentComponent,
+    LanpageComponent,
+    HeaderComponent,
+    ContactComponent,
+    AboutComponent,
+    HomeComponent,
+    PartnersComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,7 +92,8 @@ import { PaymentComponent } from './payment/payment.component';
     MatSnackBarModule,
     MatTableModule, // Add MatTableModule here
     MatSortModule,  // Add MatSortModule here (optional)
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,15 +1,16 @@
 <div class="card mb-3 room-card">
   <div class="row no-gutters">
-    
+    <!-- Image Container -->
     <div class="col-md-4 image-container">
       <ng-container *ngIf="room">
         <img *ngIf="room.imagePath" [src]="room.imagePath" class="card-img" alt="Room Image">
         
         <!-- Small Images Section -->
         <div class="small-images-container">
-          <img *ngIf="room.bathRoom" [src]="room.bathRoom" class="small-img" alt="Small Image 1">
-          <img *ngIf="room.hall" [src]="room.hall" class="small-img" alt="Small Image 2">
-          <img *ngIf="room.bedRoom" [src]="room.bedRoom" class="small-img" alt="Small Image 3">
+          <img *ngIf="room.bathRoom" [src]="room.bathRoom" class="small-img" alt="bathRoom">
+          <img *ngIf="room.hall" [src]="room.hall" class="small-img" alt="hall">
+          <img *ngIf="room.bedRoom" [src]="room.bedRoom" class="small-img" alt="bedRoom">
+          <!-- Add more images if needed -->
         </div>
       </ng-container>
     </div>
@@ -23,14 +24,13 @@
         <p class="card-text"><strong>Location:</strong> {{ room?.location }}</p>
         <p class="card-text"><strong>Description:</strong> {{ room?.description }}</p>
         <p class="card-text"><strong>Rating:</strong> {{ room?.rating }} / 5</p>
-        <!-- <p class="card-text"><strong>Available:</strong> {{ room?.ISAvailable ? 'Yes' : 'No' }}</p> -->
       </div>
     </div>
+
     <!-- Button Container -->
     <div class="col-md-4 button-group">
       <div class="d-flex flex-column justify-content-between h-100 p-3">
         <button class="btn btn-primary mb-2" (click)="onUpdate(room?.id)">Update</button>
-        <!-- <button class="btn btn-danger" (click)="onDelete(room?.id)">Delete</button> -->
       </div>
     </div>
   </div>

@@ -15,14 +15,17 @@ import { UserRoomsComponent } from './user-rooms/user-rooms.component';
 import { BookedRoomsComponent } from './booked-rooms/booked-rooms.component';
 import { RoomStatusComponent } from './room-status/room-status.component';
 import { PaymentComponent } from './payment/payment.component';
+import { AuthGuard } from './auth.guard';
+import { LanpageComponent } from './lanpage/lanpage.component';
+
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
-  { path: '', component: LoginComponent },
-  { path: 'login', component: LoginComponent },
   
+  { path: 'login', component: LoginComponent },
+  { path: '', component: LanpageComponent },
   {
-    path: 'dashboard', component: AdminDashboardComponent, children: [
+    path: 'dashboard', component: AdminDashboardComponent, canActivate: [AuthGuard],children: [
       { path: 'users', component: UsersComponent },
       { path: 'edituser/:id', component: EdituserComponent },
       {path:'rooms',component:RoomListComponent},

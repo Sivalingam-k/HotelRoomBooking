@@ -1,0 +1,40 @@
+.home-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    padding-top: 130px;  /* Add top padding to create space between header and video */
+    background-color: #f9f9f9;
+    height: 100vh;
+    box-sizing: border-box;  /* Ensure padding is included in the total height */
+  }
+  
+  .video-container {
+    width: 100%;  /* Occupy full width */
+    max-width: 1600px;  /* Increase max width for larger screens */
+    height: auto;
+    overflow: hidden;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .room-video {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+  
+  @media (max-width: 768px) {
+    .video-container {
+      width: 95%;  /* More space horizontally on smaller screens */
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .video-container {
+      width: 100%;  /* Full width on mobile */
+    }
+  }
+  

@@ -1,23 +1,108 @@
+/* Container margin and card styling */
 .container {
   margin-top: 20px;
 }
 
-.card {
-  margin-bottom: 20px;
-}
-
 .room-card {
   position: relative;
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.room-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Larger Main Image */
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-room-image {
+  width: 100%; 
+  height: auto;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Collage of Small Images */
+.central-images-container {
+  padding-left: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.image-wrapper:first-child {
+  margin-top: 20px; /* Moves the first image down */
+}
+
+.small-image {
+  width: 100%;
+  max-height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 5px;
+}
+
+/* Room Number Badge */
 .room-number-badge {
   position: absolute;
   top: 15px;
   right: 15px;
   background-color: #007bff;
   color: white;
-  padding: 5px 10px;
+  padding: 10px;
   border-radius: 50%;
   font-size: 1.2em;
   text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Search bar container styling */
+.search-bar-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.search-bar-container select {
+  width: 40%; /* Adjusted to control width */
+  padding: 10px;
+  font-size: 1rem;
+  border: 2px solid #007bff;
+  border-radius: 5px;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.search-bar-container select:hover,
+.search-bar-container select:focus {
+  border-color: #0056b3;
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+}
+
+/* Add Room Button & Search Bar Alignment */
+.add-room-search-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+button.btn-success {
+  margin-right: 10px;
+}
+
+/* Card Body */
+.card-body {
+  padding: 20px;
 }

@@ -28,4 +28,10 @@ export class RoomService {
     imageData?: File;
   }
   
-  
+ export interface Feedback {
+    id?: number;
+    name: string;
+    email: string;
+    phoneNumber: string;
+    message: string;
+  }

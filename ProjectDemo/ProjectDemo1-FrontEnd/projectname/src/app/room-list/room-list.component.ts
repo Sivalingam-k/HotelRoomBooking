@@ -15,8 +15,8 @@ export class RoomListComponent {
   rooms: Room[] = [];
   roomTypes = ['Single Bed', 'Double Bed', 'Family Type'];
   selectedImage: File | null = null;
-
-
+  selectedRoomType:string='';
+  filteredRooms: Room[] = []; 
 
   constructor(private http: HttpClient,private router:Router,private modalService: NgbModal) {}
   
@@ -41,7 +41,13 @@ export class RoomListComponent {
     this.loadRooms();
   }
   
-
+  filterRooms() {
+    if (this.selectedRoomType) {
+      this.filteredRooms = this.rooms.filter((room) => room.roomType === this.selectedRoomType);
+    } else {
+      this.filteredRooms = [...this.rooms];
+    }
+  }
   loadRooms(): void {
     this.http.get<Room[]>(`${this.apiUrl}/GetRooms`).subscribe(
       (data: Room[]) => {

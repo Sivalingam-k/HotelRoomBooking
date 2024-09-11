@@ -72,3 +72,23 @@
 .card-text strong {
   font-weight: bold;
 }
+/* Container for small images */
+.small-images-container {
+  display: flex;
+  flex-wrap: wrap; /* Wraps images into multiple rows */
+  gap: 0.5rem; /* Space between images */
+  margin-top: 1rem;
+}
+
+.small-img {
+  flex: 1 1 calc(50% - 0.5rem); /* Two images per row with space between */
+  height: auto;
+  border: 1px solid #ddd; /* Light border for each image */
+  border-radius: 0.25rem;
+  object-fit: cover; /* Ensure aspect ratio is maintained */
+  transition: transform 0.3s ease;
+}
+
+.small-img:hover {
+  transform: scale(1.05); /* Slight zoom on hover */
+}
