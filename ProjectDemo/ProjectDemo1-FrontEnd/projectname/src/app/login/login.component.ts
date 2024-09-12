@@ -16,7 +16,9 @@ export class LoginComponent {
 
   onSubmit() {
     if (this.emailPattern.test(this.email) && this.password) {
-      this.http.post<{ token?: string, user?: { role?: string } }>('http://localhost:5046/api/Users/Login', {
+      this.http.post<{ token?: string, user?: {
+        email: any; role?: string 
+} }>('http://localhost:5046/api/Users/Login', {
         email: this.email,
         password: this.password
       }, { observe: 'response' })
@@ -27,6 +29,9 @@ export class LoginComponent {
 
           if (user && token) {
             sessionStorage.setItem('authToken', token);
+              // Ensure user.email is a string
+              const userEmail = typeof user.email === 'string' ? user.email : '';
+              sessionStorage.setItem('userEmail', userEmail);
 
             console.log('User role:', user.role);
 

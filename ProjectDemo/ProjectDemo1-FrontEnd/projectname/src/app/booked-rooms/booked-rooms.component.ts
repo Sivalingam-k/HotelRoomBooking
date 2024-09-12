@@ -9,18 +9,36 @@ export class BookedRoomsComponent implements OnInit {
   bookedRooms: any[] = [];
   loading: boolean = true;
   error: string | null = null;
+  private apiUrl = 'http://localhost:5046/api/Payment';
 
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    this.http.get<any[]>('http://localhost:5046/api/Payment/GetBookedRoomsimage').subscribe({
+    this.setEmail('siva123@gmail.com').subscribe({
+      next: () => {
+        this.loadBookedRooms();
+      },
+      error: (err) => {
+        console.error('Failed to set email:', err);
+        this.error = 'Failed to set email.';
+        this.loading = false;
+      }
+    });
+  }
+
+  setEmail(email: string) {
+    return this.http.get(`${this.apiUrl}/set-email?email=${encodeURIComponent(email)}`);
+  }
+
+  loadBookedRooms(): void {
+    this.http.get<any[]>(`${this.apiUrl}/GetBookedRoomsByEmail`).subscribe({
       next: (data) => {
-        console.log(data)
         this.bookedRooms = data;
         this.loading = false;
       },
       error: (err) => {
-        this.error = 'Failed to load booked rooms';
+        console.error('Failed to load booked rooms:', err);
+        this.error = 'Failed to load current user booked rooms.';
         this.loading = false;
       }
     });

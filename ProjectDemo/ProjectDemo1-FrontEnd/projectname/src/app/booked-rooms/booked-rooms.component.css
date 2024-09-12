@@ -1,84 +1,153 @@
-/* Ensure that the card takes up the full width of the container */
+/* Card Styles */
 .card {
-    display: flex;
-    flex-direction: column;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    height: 300px; /* Set a fixed height to ensure all cards are the same size */
-  }
-  
-  .card-content {
-    display: flex;
-    height: 100%;
-  }
-  
-  .card-image {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .card-image img {
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #fff;
+  max-width: 350px; /* Adjust card size */
+  margin: 0 auto;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.25);
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card-image {
+  width: 100%;
+  height: 200px; /* Adjust image height */
+  overflow: hidden;
+  position: relative;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .card-image img {
+  transform: scale(1.1);
+}
+
+/* "Booked" badge - angled */
+/* "Booked" badge - angled and aligned */
+.booked-badge {
+  position: absolute;
+  top: 10px;
+  right: -45px; /* Adjust position for better alignment */
+  background-color: red;
+  color: white;
+  padding: 7px 20px; /* Increased padding for better text visibility */
+  font-size: 0.9rem; /* Slightly increased font size */
+  font-weight: bold;
+  transform: rotate(45deg); /* Keep the 45-degree rotation */
+  z-index: 10;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  width: 150px; /* Set fixed width to ensure full text is visible */
+  text-align: center; /* Center the text within the badge */
+}
+
+/* Card Details */
+.card-details {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.price-label {
+  font: size 2px;;
+  color: #666;
+}
+
+/* Card Footer */
+.card-footer {
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  text-align: center;
+  font-size: 0.85rem;
+  border-top: 1px solid #0056b3;
+}
+.card-detail {
+  padding: 10px;
+  background-color: #ffffff;
+  color: #fff;
+  text-align: center;
+  font-size: 0.85rem;
+  border-top: 1px solid #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .card {
     max-width: 100%;
-    height: auto;
-    object-fit: cover;
   }
-  
-  .card-details {
-    flex: 2;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+
+  .card-image {
+    height: 150px;
   }
-  
-  .card-header-content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+
+  .booked-badge {
+    font-size: 0.7rem;
+    padding: 4px 10px;
+    right: -35px; /* Adjust for smaller screens */
   }
-  
+
   .card-price {
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 1rem;
   }
-  
+
   .price-label {
-    display: block;
-    font-size: 0.875rem;
+    font-size: 0.75rem;
   }
-  
+
   .card-footer {
-    padding: 10px 15px;
-    background-color: black;
-    border-top: 1px solid #333;
-    text-align: center;
+    font-size: 0.75rem;
   }
-  
-  .card-footer .text-white {
-    color: white;
+}
+.room-card-header-content {
+  display: flex;
+  flex-direction: column; /* Aligns children vertically */
+  gap: 10px; /* Adds spacing between lines */
+  padding: 10px; /* Adds padding around the details */
+}
+
+.price-label {
+  display: block; /* Ensures each span is treated as a block element */
+  font-size: 0.9rem; /* Adjust font size as needed */
+  color: #333; /* Adjust text color as needed */
+  margin-bottom: 5px; /* Adds space below each line */
+}
+@media (max-width: 768px) {
+  .room-details {
+    padding: 5px; /* Adjust padding for smaller screens */
   }
-  
-  /* Ensure responsive design */
-  @media (max-width: 768px) {
-    .card {
-      height: auto; /* Allow height to adjust based on content */
-    }
-  
-    .card-content {
-      flex-direction: column;
-    }
-  
-    .card-image,
-    .card-details {
-      width: 100%;
-    }
-  
-    .card-image img {
-      width: 100%;
-      height: auto;
-    }
+
+  .price-label {
+    font-size: 0.8rem; /* Adjust font size for smaller screens */
   }
-  
+}

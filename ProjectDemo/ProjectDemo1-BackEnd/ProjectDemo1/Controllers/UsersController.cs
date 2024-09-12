@@ -163,7 +163,7 @@ namespace ProjectDemo1.Controllers
         //}
         [HttpGet]
         [Route("GetUsers")]
-        [Authorize]
+       
         public async Task<IActionResult> GetUsers()
         {
             var users = await dbContext.Users

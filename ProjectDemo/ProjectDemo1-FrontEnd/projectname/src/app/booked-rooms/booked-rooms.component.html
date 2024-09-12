@@ -1,4 +1,4 @@
-
+<!-- 
 <div *ngIf="loading" class="text-center">Loading...</div>
 <div *ngIf="error" class="alert alert-danger text-center">{{ error }}</div>
 <div *ngIf="!loading && !error" class="container">
@@ -20,6 +20,59 @@
         <div class="card-footer">
           <small class="text-white">{{ room.roomType }}</small>
           <span class="text-white">Booked</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- <div *ngIf="loading" class="text-center">Loading...</div>
+<div *ngIf="error" class="alert alert-danger text-center">{{ error }}</div>
+<div *ngIf="!loading && !error" class="container">
+  <div class="row">
+    <div *ngFor="let room of bookedRooms" class="col-md-4 mb-4">
+      <div class="card">
+        <div class="card-image">
+          <img [src]="room.imagePath" class="card-img-top" alt="Room image">
+          <div class="booked-badge">Booked</div> 
+        </div>
+       
+          <div class="card-detail ">
+            <span class="price-label">PRICE : {{ room.price }}</span> 
+          
+            <span class="price-label">RATING : {{ room.rating }}</span>
+            <span class="price-label">LOCATION : {{ room.location }}</span>
+            <span class="price-label">DESCRIPTION : {{ room.description}}</span>
+             <span class="price-label">AMENTIES : {{ room.amenities}}</span>
+             <span class="price-label">AMENTIES : {{ room.roomType}}</span>
+            
+          </div>
+       
+        <div class="card-footer">
+          <small class="text-white"></small>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+<div *ngIf="loading" class="text-center">Loading...</div>
+<div *ngIf="error" class="alert alert-danger text-center">{{ error }}</div>
+<div *ngIf="!loading && !error" class="container">
+  <div class="row">
+    <div *ngFor="let room of bookedRooms" class="col-md-4 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Room Number: {{ room.roomNumber }}</h5>
+          <p class="card-text">
+            <strong>Room Type:</strong> {{ room.roomType }}<br>
+            <strong>Price:</strong> {{ room.roomPrice | currency }}<br>
+            <strong>Booking Date:</strong> {{ room.bookingDate | date:'medium' }}
+          </p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">Details subject to change</small>
         </div>
       </div>
     </div>

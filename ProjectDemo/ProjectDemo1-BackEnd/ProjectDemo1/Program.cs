@@ -12,6 +12,18 @@ builder.Logging.AddConsole();
 var connection = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ProjectDbContext>(options =>
 options.UseSqlServer(connection));
+//session
+builder.Services.AddDistributedMemoryCache(); // Adds a default in-memory implementation of IDistributedCache
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(20);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
+
+builder.Services.AddControllersWithViews();
+
 
 builder.Services.AddControllers();
 builder.Services.AddAuthentication(
@@ -83,8 +95,10 @@ if (app.Environment.IsDevelopment())
 app.UseCors("AllowAll");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+
 app.UseAuthentication();
 app.UseAuthorization();
+
 app.Use(async (context, next) =>
 {
     context.Response.Headers.Add("Cache-Control", "no-store");

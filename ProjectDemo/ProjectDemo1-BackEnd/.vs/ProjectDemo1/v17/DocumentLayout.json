@@ -1,37 +1,12 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Sivalingam.K\\Downloads\\Room_Booking_final_3\\HotelRoomBooking\\ProjectDemo\\ProjectDemo1-BackEnd\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{91B095CF-6252-4FB7-BB21-E468C3C0B20C}|ProjectDemo1\\ProjectDemo1.csproj|c:\\users\\sivalingam.k\\downloads\\room_booking_final_3\\hotelroombooking\\projectdemo\\projectdemo1-backend\\projectdemo1\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{91B095CF-6252-4FB7-BB21-E468C3C0B20C}|ProjectDemo1\\ProjectDemo1.csproj|solutionrelative:projectdemo1\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "WorkspaceRootPath": "C:\\Users\\Sivalingam.K\\Downloads\\Room_Booking_final4\\HotelRoomBooking\\ProjectDemo\\ProjectDemo1-BackEnd\\",
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AdminController.cs",
-              "DocumentMoniker": "C:\\Users\\Sivalingam.K\\Downloads\\Room_Booking_final_3\\HotelRoomBooking\\ProjectDemo\\ProjectDemo1-BackEnd\\ProjectDemo1\\Controllers\\AdminController.cs",
-              "RelativeDocumentMoniker": "ProjectDemo1\\Controllers\\AdminController.cs",
-              "ToolTip": "C:\\Users\\Sivalingam.K\\Downloads\\Room_Booking_final_3\\HotelRoomBooking\\ProjectDemo\\ProjectDemo1-BackEnd\\ProjectDemo1\\Controllers\\AdminController.cs",
-              "RelativeToolTip": "ProjectDemo1\\Controllers\\AdminController.cs",
-              "ViewState": "AgIAAFsAAAAAAAAAAAAIwHcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T06:53:51.018Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
+      "DocumentGroups": []
     }
   ]
 }

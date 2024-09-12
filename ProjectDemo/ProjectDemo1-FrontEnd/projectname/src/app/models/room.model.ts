@@ -35,3 +35,13 @@ export class RoomService {
     phoneNumber: string;
     message: string;
   }
+  export interface User {
+    email?: string; // Use optional if email might not be present
+    role?: string;
+  }
+  
+  export interface LoginResponse {
+    token?: string;
+    user?: User;
+  }
+  

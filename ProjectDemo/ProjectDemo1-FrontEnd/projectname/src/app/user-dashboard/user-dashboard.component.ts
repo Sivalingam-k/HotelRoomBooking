@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -7,9 +8,20 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrl: './user-dashboard.component.css'
 })
 export class UserDashboardComponent {
+  userEmail: string = '';
   isSidebarVisible = false;
 
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbModal,private router:Router) {}
+  ngOnInit(): void {
+    this.userEmail = sessionStorage.getItem('userEmail') || '';
+  }
+
+  logout(): void {
+    sessionStorage.removeItem('authToken');
+    //localStorage.removeItem('userEmail');
+    this.userEmail = '';
+    this.router.navigate(['/login']); // Redirect to login page or home page
+  }
 
   toggleSidebar(): void {
     this.isSidebarVisible = !this.isSidebarVisible;

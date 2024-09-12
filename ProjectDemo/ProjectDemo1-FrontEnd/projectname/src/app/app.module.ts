@@ -44,6 +44,7 @@ import { HomeComponent } from './home/home.component';
 import { PartnersComponent } from './partners/partners.component';
 import { FooterComponent } from './footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DatepickerComponent } from './datepicker/datepicker.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HomeComponent,
     PartnersComponent,
     FooterComponent,
+    DatepickerComponent,
   ],
   imports: [
     BrowserModule,

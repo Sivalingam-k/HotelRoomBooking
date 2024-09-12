@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 <h2>Room Status</h2>
 <div class="header">
   <button (click)="showAvailableRooms()" [class.active]="displayedRooms === availableRooms">Available Rooms</button>
@@ -7,15 +9,34 @@
 <div *ngIf="loading" class="text-center">Loading...</div>
 <div *ngIf="error" class="alert alert-danger text-center">{{ error }}</div>
 
-<!-- Display Room Numbers -->
+<!-- Display Room Numbers in Columns Based on Selected View -->
 <div *ngIf="!loading && !error">
-  <ul class="room-list">
-    <li *ngFor="let room of displayedRooms">
-      <span class="badge">{{ room.roomNumber }}</span>
-    </li>
-  </ul>
+  <!-- Show Available Rooms Column -->
+  <div *ngIf="displayedRooms === availableRooms" class="column">
+    <div class="column-header">
+      <i class="fas fa-check-circle available-icon"></i>
+      <h3>Available Rooms</h3>
+    </div>
+    <ul class="room-list">
+      <li *ngFor="let room of availableRooms">
+        <span class="badge">{{ room.roomNumber }}</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Show Booked Rooms Column -->
+  <div *ngIf="displayedRooms === bookedRooms" class="column">
+    <div class="column-header">
+      <i class="fas fa-times-circle booked-icon"></i>
+      <h3>Booked Rooms</h3>
+    </div>
+    <ul class="room-list">
+      <li *ngFor="let room of bookedRooms">
+        <span class="badge">{{ room.roomNumber }}</span>
+      </li>
+    </ul>
+  </div>
 </div>
 
-  
-  <!-- Include the router outlet to display the routed components -->
-  <router-outlet></router-outlet>
+<!-- Include the router outlet to display the routed components -->
+<router-outlet></router-outlet>

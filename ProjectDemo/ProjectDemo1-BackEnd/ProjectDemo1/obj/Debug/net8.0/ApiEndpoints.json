@@ -63,6 +63,32 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "ProjectDemo1.Controllers.DatePickerController",
+    "Method": "CreateDate",
+    "RelativePath": "api/DatePicker/CreateDate",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newDatePicker",
+        "Type": "ProjectDemo1.Models.DatePicker",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProjectDemo1.Controllers.DatePickerController",
+    "Method": "GetDate",
+    "RelativePath": "api/DatePicker/GetDate",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ProjectDemo1.Controllers.PaymentController",
     "Method": "GetAvailableRooms",
     "RelativePath": "api/Payment/GetAvailableRooms",
@@ -77,6 +103,26 @@
     "Method": "GetBookedRooms",
     "RelativePath": "api/Payment/GetBookedRooms",
     "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProjectDemo1.Controllers.PaymentController",
+    "Method": "GetBookedRoomsByEmail",
+    "RelativePath": "api/Payment/GetBookedRoomsByEmail",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProjectDemo1.Controllers.PaymentController",
+    "Method": "GetBookedRoomsByEmail",
+    "RelativePath": "api/Payment/GetBookedRoomsByEmail",
+    "HttpMethod": "",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
@@ -124,6 +170,38 @@
         "Name": "paymentRequest",
         "Type": "ProjectDemo1.Models.PaymentRequest",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProjectDemo1.Controllers.PaymentController",
+    "Method": "SetEmail",
+    "RelativePath": "api/Payment/set-email",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ProjectDemo1.Controllers.PaymentController",
+    "Method": "SetEmail",
+    "RelativePath": "api/Payment/SetEmail",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
